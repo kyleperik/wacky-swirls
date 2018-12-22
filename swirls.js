@@ -113,6 +113,18 @@ window.onload = function () {
     window.addEventListener('wheel', function (e) {
         pos = Math.max(0, pos + e.deltaY);
     });
+
+    var touches;
+    window.addEventListener('touchstart', function (e) {
+        touches = e.changedTouches;
+    });
+    window.addEventListener('touchmove', function (e) {
+        pos = Math.max(0, pos + (e.changedTouches[0].pageX - touches[0].pageX))
+        touches = e.changedTouches;
+    });
+    window.addEventListener('touchend', function (e) {
+        touces = [];
+    });
 };
 
 init();
