@@ -42,7 +42,7 @@ function generate(last) {
     var mirrors = (
         split
             ? (
-                Math.round(Math.random() * 2) === 0 && last.mirrors < 20 || last.mirrors === 1
+                Math.round(Math.random() * 2) === 0 && last.mirrors < 20 || factor(last.mirrors) === 1
                     ? last.mirrors * Math.ceil(Math.random() * 5)
                     : last.mirrors / factor(last.mirrors)
             ) : last.mirrors
@@ -54,8 +54,8 @@ function generate(last) {
             last.v.z + last.vel.z
         ),
         vel: {
-            x: (last.vel.x - last.v.x * 0.5 + last.accel.x) * .5,
-            z: (last.vel.z - last.v.z * 0.5 + last.accel.z) * .5,
+            x: (last.vel.x - last.v.x * 0.5 + last.accel.x) * Math.random(),
+            z: (last.vel.z - last.v.z * 0.5 + last.accel.z) * Math.random(),
         },
         accel: {
             x: last.accel.x + (Math.random() - 0.5) * 0.1,
